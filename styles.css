@@ -419,37 +419,6 @@ body:not(.step-1) .step {
     font-weight: 600;
 }
 
-.success-screen {
-    display: none;
-    text-align: center;
-    opacity: 0;
-    transform: translateY(30px);
-}
-
-.success-screen.show {
-    display: block;
-    animation: fadeInUp 0.8s ease-out forwards;
-}
-
-.success-icon {
-    width: 100px;
-    height: 100px;
-    margin: 0 auto 2rem;
-    background: radial-gradient(circle, var(--success) 0%, var(--secondary-green) 100%);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: var(--glow-green);
-    animation: successPulse 2s ease-in-out infinite;
-}
-
-.success-icon::before {
-    content: '✓';
-    font-size: 3rem;
-    font-weight: bold;
-    color: #ffffff;
-}
 
 /* ===== ETAPA 2: DNA MUSICAL ===== */
 .knobs-grid {
