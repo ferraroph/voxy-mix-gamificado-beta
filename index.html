@@ -25,7 +25,7 @@
     <div class="funnel-container" id="funnelContainer">
 
         <!-- ===== ETAPA 1: LOGIN GAMIFICADO ===== -->
-        <section class="step active" id="step1" style="display: flex;">
+        <section class="step active" id="step1">
             <!-- PARTÍCULAS DE FUNDO -->
             <div class="particles" id="particles1"></div>
 
@@ -73,22 +73,11 @@
                     </button>
                 </form>
 
-                <!-- TELA DE SUCESSO -->
-                <div class="success-screen" id="successScreen1">
-                    <div class="success-icon"></div>
-                    <h2 class="success-title">Sistema Ativado!</h2>
-                    <p class="success-message">
-                        Seu acesso foi liberado! Agora você está pronto para embarcar nesta experiência única do Voxy Mix.
-                    </p>
-                    <button class="continue-button" onclick="goToStep(2)">
-                        Entrar na Experiência
-                    </button>
-                </div>
             </div>
         </section>
 
         <!-- ===== ETAPA 2: DNA MUSICAL ===== -->
-        <section class="step" id="step2" style="display: none;">
+        <section class="step" id="step2">
             <div class="main-container">
                 <div class="header">
                     <h1 class="title">Mixer de DNA Musical</h1>
@@ -177,16 +166,16 @@
                     </div>
                     
                     <div class="continue-section">
-                        <button class="continue-btn" id="continueBtn2" disabled onclick="goToStep(3)">
-                            Continuar
-                        </button>
+                    <button class="continue-btn" id="continueBtn2" disabled>
+                        Continuar
+                    </button>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- ===== ETAPA 3: SEGMENTAÇÃO DINÂMICA ===== -->
-        <section class="step" id="step3" style="display: none;">
+        <section class="step" id="step3">
             <div class="main-container">
                 <div class="rack" id="mainRack" class="powered-off">
                     <div class="rack-header">
@@ -216,14 +205,14 @@
                         <div class="led-group"><div class="led" id="completeLed"></div><span class="led-label">RDY</span></div>
                     </div>
                     <div class="advance-section">
-                        <button class="advance-btn" id="advanceBtn" onclick="goToStep(4)">🔒 Selecione um perfil para começar</button>
+                        <button class="advance-btn" id="advanceBtn">🔒 Selecione um perfil para começar</button>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- ===== ETAPA 4: MECANISMO ANTIGO COMUM ===== -->
-        <section class="step" id="step4" style="display: none;">
+        <section class="step" id="step4">
             <div class="main-container">
                 <div class="header">
                     <div class="progress-indicator">Etapa 4/7</div>
@@ -252,7 +241,7 @@
                 
                 <!-- Botão Continuar -->
                 <div class="continue-section" id="continueSection4">
-                    <button class="continue-btn" id="continueBtn4" onclick="goToStep(5)">
+                    <button class="continue-btn" id="continueBtn4">
                         Tentar Última Alternativa
                     </button>
                 </div>
@@ -260,7 +249,7 @@
         </section>
 
         <!-- ===== ETAPA 5: PRESETS COMUNS ===== -->
-        <section class="step" id="step5" style="display: none;">
+        <section class="step" id="step5">
             <div class="main-container">
                 <div class="header">
                     <div class="progress-indicator">Etapa 5/7</div>
@@ -299,7 +288,7 @@
                 
                 <!-- Botão Continuar -->
                 <div class="continue-section" id="continueSection5">
-                    <button class="continue-btn" id="continueBtn5" onclick="showTransition()">
+                    <button class="continue-btn" id="continueBtn5">
                         Descobrir Nova Tecnologia
                     </button>
                 </div>
@@ -307,7 +296,7 @@
         </section>
 
         <!-- ===== ETAPA 6: PRESETS DINÂMICOS ===== -->
-        <section class="step" id="step6" style="display: none;">
+        <section class="step" id="step6">
             <div class="main-container">
                 <div class="header">
                     <div class="progress-indicator">Etapa 6/7</div>
@@ -365,7 +354,7 @@
                         <div class="success-title">🎯 Preset Dinâmico Otimizado!</div>
                         <div class="success-subtitle">Sua voz foi automaticamente calibrada para qualidade profissional</div>
                     </div>
-                    <button class="continue-btn" id="continueBtn6" onclick="goToStep(7)">
+                    <button class="continue-btn" id="continueBtn6">
                         Acessar Método Completo
                     </button>
                 </div>
@@ -373,7 +362,7 @@
         </section>
 
         <!-- ===== ETAPA 7: OFERTA ===== -->
-        <section class="step" id="step7" style="display: none;">
+        <section class="step" id="step7">
             <div class="main-container">
                 <!-- HERO SECTION -->
                 <section class="hero-section">
