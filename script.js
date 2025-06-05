@@ -110,7 +110,6 @@ class VoxyMixFunnel {
         const emailInput = document.getElementById('email');
         const passwordInput = document.getElementById('password');
         const passwordSuggestion = document.getElementById('passwordSuggestion');
-        const successScreen = document.getElementById('successScreen');
 
         // Sugestão de senha
         const passwords = ['V7x#m2K9', 'P4@nW8qZ', 'M3$tR5oL', 'X9&fY2nU'];
@@ -196,18 +195,13 @@ class VoxyMixFunnel {
     }
 
     showLoginSuccess() {
-        document.querySelector('.login-form').style.display = 'none';
-        document.querySelector('.logo-section').style.display = 'none';
-        
-        const successScreen = document.getElementById('successScreen');
-        successScreen.classList.add('show');
-        
+        const form = document.querySelector('.login-form');
+        const logo = document.querySelector('.logo-section');
+        if (form) form.style.display = 'none';
+        if (logo) logo.style.display = 'none';
+
         this.audioSystem.playSuccess();
-        
-        // Botão continuar
-        document.getElementById('continueToNextStep')?.addEventListener('click', () => {
-            this.goToStep(2);
-        });
+        this.goToStep(2);
     }
 
     initKonamiCode() {
