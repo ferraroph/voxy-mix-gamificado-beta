@@ -920,7 +920,7 @@ class VoxyMixFunnel {
         // Continue button
         document.getElementById('continueBtn5')?.addEventListener('click', () => {
             this.completeStep5();
-            this.goToStep(6);
+            this.showTransition();
         });
     }
 
@@ -1108,8 +1108,50 @@ class VoxyMixFunnel {
     completeStep5() {
         this.userData.etapa5.completed = true;
         this.userData.etapa5.timestamp = Date.now();
-        
+
         console.log('✅ Etapa 5 completa:', this.userData.etapa5);
+    }
+
+    showTransition() {
+        const screen = document.getElementById('transitionScreen');
+        if (!screen) {
+            this.goToStep(6);
+            return;
+        }
+
+        screen.style.display = 'flex';
+
+        const iconEl = document.getElementById('centralIcon');
+        const icons = ['🎚️', '🎙️', '🎧', '💸', '✓'];
+        let iconIndex = 0;
+
+        const switchIcon = () => {
+            if (iconEl && iconIndex < icons.length) {
+                iconEl.textContent = icons[iconIndex];
+                iconIndex++;
+                if (iconIndex < icons.length) {
+                    setTimeout(switchIcon, 600);
+                }
+            }
+        };
+        switchIcon();
+
+        const percentEl = document.getElementById('progressPercentage');
+        let progress = 0;
+        const progInterval = setInterval(() => {
+            progress += 4;
+            if (percentEl) percentEl.textContent = Math.min(progress, 100) + '%';
+            if (progress >= 100) clearInterval(progInterval);
+        }, 100);
+
+        setTimeout(() => {
+            screen.classList.add('hide');
+            setTimeout(() => {
+                screen.style.display = 'none';
+                screen.classList.remove('hide');
+                this.goToStep(6);
+            }, 500);
+        }, 3000);
     }
 
     // ===== ETAPA 6: PRESETS DINÂMICOS =====
@@ -1784,10 +1826,11 @@ let voxyMixApp;
 document.addEventListener('DOMContentLoaded', () => {
     console.log('🚀 Iniciando Voxy Mix Funil Gamificado...');
     voxyMixApp = new VoxyMixFunnel();
-    
+
     // Expor funções globais para uso em HTML
     window.goToStep = (step) => voxyMixApp.goToStep(step);
     window.continueToNextStep = () => voxyMixApp.goToStep(voxyMixApp.currentStep + 1);
+    window.showTransition = () => voxyMixApp.showTransition();
 });
 
 // ===== TRATAMENTO DE ERROS GLOBAL =====
