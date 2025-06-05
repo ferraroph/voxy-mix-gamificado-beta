@@ -110,7 +110,6 @@ class VoxyMixFunnel {
         const emailInput = document.getElementById('email');
         const passwordInput = document.getElementById('password');
         const passwordSuggestion = document.getElementById('passwordSuggestion');
-        const successScreen = document.getElementById('successScreen');
 
         // Sugestão de senha
         const passwords = ['V7x#m2K9', 'P4@nW8qZ', 'M3$tR5oL', 'X9&fY2nU'];
@@ -196,18 +195,13 @@ class VoxyMixFunnel {
     }
 
     showLoginSuccess() {
-        document.querySelector('.login-form').style.display = 'none';
-        document.querySelector('.logo-section').style.display = 'none';
-        
-        const successScreen = document.getElementById('successScreen');
-        successScreen.classList.add('show');
-        
+        const form = document.querySelector('.login-form');
+        const logo = document.querySelector('.logo-section');
+        if (form) form.style.display = 'none';
+        if (logo) logo.style.display = 'none';
+
         this.audioSystem.playSuccess();
-        
-        // Botão continuar
-        document.getElementById('continueToNextStep')?.addEventListener('click', () => {
-            this.goToStep(2);
-        });
+        this.goToStep(2);
     }
 
     initKonamiCode() {
@@ -276,7 +270,7 @@ class VoxyMixFunnel {
         document.addEventListener('touchend', () => this.stopKnobDrag(knobData));
 
         // Continue button
-        document.getElementById('continueBtn')?.addEventListener('click', () => {
+        document.getElementById('continueBtn2')?.addEventListener('click', () => {
             if (this.validateDNA(knobData)) {
                 this.completeDNA(knobData);
                 this.goToStep(3);
@@ -451,7 +445,7 @@ class VoxyMixFunnel {
     }
 
     updateDNAButton(knobData, total, MAX_POINTS) {
-        const continueBtn = document.getElementById('continueBtn');
+        const continueBtn = document.getElementById('continueBtn2');
         if (!continueBtn) return;
         
         const activeKnobs = Object.values(knobData).filter(k => k.value > 0).length;
@@ -752,14 +746,14 @@ class VoxyMixFunnel {
         this.updateScoreStep4(currentScore);
         
         // Continue button
-        document.getElementById('continueBtn')?.addEventListener('click', () => {
+        document.getElementById('continueBtn4')?.addEventListener('click', () => {
             this.completeStep4();
             this.goToStep(5);
         });
     }
 
     renderChoicesStep4() {
-        const grid = document.getElementById('choicesGrid');
+        const grid = document.getElementById('choicesGrid4');
         if (!grid) return;
         
         const segmento = this.userData.etapa3.segmento || 'ambos';
@@ -809,7 +803,7 @@ class VoxyMixFunnel {
         });
         
         // Animação de erro
-        const container = document.getElementById('choiceContainer');
+        const container = document.getElementById('choiceContainer4');
         if (container) {
             container.classList.add('error-shake', 'glitch');
         }
@@ -831,7 +825,7 @@ class VoxyMixFunnel {
     }
 
     showResultStep4(choiceId) {
-        const container = document.getElementById('choiceContainer');
+        const container = document.getElementById('choiceContainer4');
         if (!container) return;
         
         const consequences = this.getConsequencesStep4(choiceId);
@@ -863,7 +857,7 @@ class VoxyMixFunnel {
         
         // Mostrar botão continuar
         setTimeout(() => {
-            const continueSection = document.getElementById('continueSection');
+            const continueSection = document.getElementById('continueSection4');
             if (continueSection) {
                 continueSection.classList.add('show');
             }
@@ -892,8 +886,8 @@ class VoxyMixFunnel {
     updateScoreStep4(newScore) {
         this.userData.etapa4.score = newScore;
         
-        const fill = document.getElementById('scoreFill');
-        const text = document.getElementById('scoreText');
+        const fill = document.getElementById('scoreFill4');
+        const text = document.getElementById('scoreText4');
         
         if (text) text.textContent = `${newScore}/100`;
         if (fill) {
@@ -924,7 +918,7 @@ class VoxyMixFunnel {
         this.createWaveformStep5();
         
         // Continue button
-        document.getElementById('continueBtn')?.addEventListener('click', () => {
+        document.getElementById('continueBtn5')?.addEventListener('click', () => {
             this.completeStep5();
             this.goToStep(6);
         });
@@ -948,7 +942,7 @@ class VoxyMixFunnel {
     }
 
     renderPresetsStep5() {
-        const grid = document.getElementById('presetGrid');
+        const grid = document.getElementById('presetGrid5');
         if (!grid) return;
         
         grid.innerHTML = '';
@@ -979,7 +973,7 @@ class VoxyMixFunnel {
     }
 
     createWaveformStep5() {
-        const waveform = document.getElementById('waveform');
+        const waveform = document.getElementById('waveform5');
         if (!waveform) return;
         
         waveform.innerHTML = '';
@@ -1004,7 +998,7 @@ class VoxyMixFunnel {
         });
         
         // Mostrar waveform
-        const waveformDisplay = document.getElementById('waveformDisplay');
+        const waveformDisplay = document.getElementById('waveformDisplay5');
         if (waveformDisplay) {
             waveformDisplay.classList.add('show');
         }
@@ -1012,13 +1006,13 @@ class VoxyMixFunnel {
         // Simular processamento
         setTimeout(() => {
             // Erro no waveform
-            const waveform = document.getElementById('waveform');
+            const waveform = document.getElementById('waveform5');
             if (waveform) {
                 waveform.classList.add('error');
             }
             
             // Flash de erro
-            const container = document.getElementById('presetContainer');
+            const container = document.getElementById('presetContainer5');
             if (container) {
                 container.classList.add('error-flash');
             }
@@ -1038,7 +1032,7 @@ class VoxyMixFunnel {
     }
 
     showFailureResultStep5(presetId) {
-        const container = document.getElementById('presetContainer');
+        const container = document.getElementById('presetContainer5');
         if (!container) return;
         
         const failures = this.getPresetFailuresStep5(presetId);
@@ -1072,7 +1066,7 @@ class VoxyMixFunnel {
         
         // Mostrar botão continuar
         setTimeout(() => {
-            const continueSection = document.getElementById('continueSection');
+            const continueSection = document.getElementById('continueSection5');
             if (continueSection) {
                 continueSection.classList.add('show');
             }
@@ -1099,8 +1093,8 @@ class VoxyMixFunnel {
     updateScoreStep5(newScore) {
         this.userData.etapa5.score = newScore;
         
-        const fill = document.getElementById('scoreFill');
-        const text = document.getElementById('scoreText');
+        const fill = document.getElementById('scoreFill5');
+        const text = document.getElementById('scoreText5');
         
         if (text) text.textContent = `${newScore}/100`;
         if (fill) {
@@ -1129,14 +1123,14 @@ class VoxyMixFunnel {
         this.updateScoreStep6(currentScore);
         
         // Continue button
-        document.getElementById('continueBtn')?.addEventListener('click', () => {
+        document.getElementById('continueBtn6')?.addEventListener('click', () => {
             this.completeStep6();
             this.goToStep(7);
         });
     }
 
     createWaveformStep6() {
-        const container = document.getElementById('waveformContainer');
+        const container = document.getElementById('waveformContainer6');
         if (!container) return;
         
         container.innerHTML = '';
@@ -1150,7 +1144,7 @@ class VoxyMixFunnel {
     }
 
     renderProblemsStep6() {
-        const grid = document.getElementById('problemsGrid');
+        const grid = document.getElementById('problemsGrid6');
         if (!grid) return;
         
         const problems = this.getVocalProblemsStep6();
@@ -1198,7 +1192,7 @@ class VoxyMixFunnel {
     }
 
     renderKnobsStep6() {
-        const grid = document.getElementById('knobsGrid');
+        const grid = document.getElementById('knobsGrid6');
         if (!grid) return;
         
         const knobs = this.getKnobControlsStep6();
@@ -1280,7 +1274,7 @@ class VoxyMixFunnel {
         });
         
         // Feedback positivo
-        const feedbackText = document.getElementById('feedbackText');
+        const feedbackText = document.getElementById('feedbackText6');
         if (feedbackText) {
             feedbackText.textContent = `✨ ${knob.label} aplicado! Melhoria detectada...`;
             feedbackText.classList.add('success');
@@ -1303,7 +1297,7 @@ class VoxyMixFunnel {
         if (this.userData.etapa6.completed) return;
         
         // Feedback neutro
-        const feedbackText = document.getElementById('feedbackText');
+        const feedbackText = document.getElementById('feedbackText6');
         if (feedbackText) {
             feedbackText.textContent = `${knob.label} ajustado. Continue otimizando...`;
             feedbackText.classList.remove('success');
@@ -1331,21 +1325,21 @@ class VoxyMixFunnel {
         this.updateScoreStep6(100);
         
         // Feedback final
-        const feedbackText = document.getElementById('feedbackText');
+        const feedbackText = document.getElementById('feedbackText6');
         if (feedbackText) {
             feedbackText.textContent = '🎯 Preset Dinâmico calibrado perfeitamente!';
             feedbackText.classList.add('success');
         }
         
         // Ocultar controles
-        const controlsSection = document.getElementById('controlsSection');
+        const controlsSection = document.getElementById('controlsSection6');
         if (controlsSection) {
             controlsSection.classList.add('hidden');
         }
         
         // Mostrar seção de sucesso
         setTimeout(() => {
-            const successSection = document.getElementById('successSection');
+            const successSection = document.getElementById('successSection6');
             if (successSection) {
                 successSection.classList.add('show');
             }
@@ -1358,8 +1352,8 @@ class VoxyMixFunnel {
     updateScoreStep6(newScore) {
         this.userData.etapa6.score = newScore;
         
-        const fill = document.getElementById('scoreFill');
-        const text = document.getElementById('scoreText');
+        const fill = document.getElementById('scoreFill6');
+        const text = document.getElementById('scoreText6');
         
         if (text) text.textContent = `${newScore}/100`;
         if (fill) {
