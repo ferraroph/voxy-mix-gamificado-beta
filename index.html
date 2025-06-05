@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voxy Mix - Experiência Gamificada</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- SISTEMA DE PROGRESSO GLOBAL -->
+    <div class="global-progress" id="globalProgress">
+        <div class="progress-bar">
+            <div class="progress-fill" id="progressFill"></div>
+        </div>
+        <span class="step-indicator" id="stepIndicator">Etapa 1/7</span>
+    </div>
+
+    <!-- SISTEMA DE NOTIFICAÇÕES GLOBAL -->
+    <div class="notification-system">
+        <div class="notification" id="globalNotification"></div>
+        <div class="system-notification" id="systemNotification"></div>
+    </div>
+
+    <!-- CONTAINER PRINCIPAL DO FUNIL -->
+    <div class="funnel-container" id="funnelContainer">
+
+        <!-- ===== ETAPA 1: LOGIN GAMIFICADO ===== -->
+        <section class="step active" id="step1" style="display: flex;">
+            <!-- PARTÍCULAS DE FUNDO -->
+            <div class="particles" id="particles1"></div>
+
+            <div class="login-container">
+                <!-- SEÇÃO DO LOGO -->
+                <div class="logo-section">
+                    <div class="logo-placeholder">
+                        <img src="assets/images/logo-voxy-mix-transparente.png" alt="Voxy Mix Logo">
+                    </div>
+                    <h1 class="main-title">Parabéns, você recebeu um convite exclusivo</h1>
+                    <p class="subtitle">Complete o desafio e ganhe <strong>ACESSO ANTECIPADO</strong> ao Voxy Mix - A ferramenta que irá <strong>REVOLUCIONAR O MERCADO DA MÚSICA</strong></p>
+                </div>
+
+                <!-- FORMULÁRIO DE ACESSO -->
+                <form class="login-form" id="loginForm">
+                    <div class="form-group">
+                        <label class="form-label" for="email">E-mail</label>
+                        <input 
+                            type="email" 
+                            id="email" 
+                            name="email" 
+                            class="form-input" 
+                            placeholder="Digite seu melhor e-mail"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="password">Senha de Acesso</label>
+                        <input 
+                            type="password" 
+                            id="password" 
+                            name="password" 
+                            class="form-input" 
+                            placeholder="Crie sua senha ou use a sugestão abaixo"
+                            required
+                        >
+                        <div class="password-suggestion" id="passwordSuggestion">
+                            Sugestão: <span class="suggestion-text" id="suggestedPassword">V7x#m2K9</span> (clique para usar)
+                        </div>
+                    </div>
+
+                    <button type="submit" class="submit-button" id="submitBtn">
+                        Começar Desafio
+                    </button>
+                </form>
+
+                <!-- TELA DE SUCESSO -->
+                <div class="success-screen" id="successScreen1">
+                    <div class="success-icon"></div>
+                    <h2 class="success-title">Sistema Ativado!</h2>
+                    <p class="success-message">
+                        Seu acesso foi liberado! Agora você está pronto para embarcar nesta experiência única do Voxy Mix.
+                    </p>
+                    <button class="continue-button" onclick="goToStep(2)">
+                        Entrar na Experiência
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== ETAPA 2: DNA MUSICAL ===== -->
+        <section class="step" id="step2" style="display: none;">
+            <div class="main-container">
+                <div class="header">
+                    <h1 class="title">Mixer de DNA Musical</h1>
+                    <p class="subtitle">Monte sua fórmula de sucesso</p>
+                </div>
+                
+                <div class="mixer-container">
+                    <div class="points-display">
+                        <span class="points-text">Pontos: </span>
+                        <span class="points-value" id="pointsValue">0/300</span>
+                    </div>
+                    
+                    <div class="formula-container">
+                        <div class="capsule">
+                            <div class="liquid" id="liquid">
+                                <div class="bubbles">
+                                    <div class="bubble" style="animation-delay: 0s; left: -10px;"></div>
+                                    <div class="bubble" style="animation-delay: 0.5s; left: 0px;"></div>
+                                    <div class="bubble" style="animation-delay: 1s; left: 10px;"></div>
+                                </div>
+                            </div>
+                            <div class="formula-result" id="formulaResult">
+                                <div class="result-icon">🧪</div>
+                                <div class="result-name">Analisando...</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="knobs-grid">
+                        <div class="knob-container" data-type="fama">
+                            <div class="knob-wrapper">
+                                <div class="knob" data-knob="fama">
+                                    <div class="knob-indicator"></div>
+                                    <div class="knob-value">0</div>
+                                </div>
+                            </div>
+                            <div class="knob-info">
+                                <div class="knob-label">FAMA</div>
+                                <div class="knob-desc">Lançar Hits e Fazer Parcerias</div>
+                            </div>
+                        </div>
+                        
+                        <div class="knob-container" data-type="dinheiro">
+                            <div class="knob-wrapper">
+                                <div class="knob" data-knob="dinheiro">
+                                    <div class="knob-indicator"></div>
+                                    <div class="knob-value">0</div>
+                                </div>
+                            </div>
+                            <div class="knob-info">
+                                <div class="knob-label">DINHEIRO</div>
+                                <div class="knob-desc">Transformar música em grana</div>
+                            </div>
+                        </div>
+                        
+                        <div class="knob-container" data-type="precisao">
+                            <div class="knob-wrapper">
+                                <div class="knob" data-knob="precisao">
+                                    <div class="knob-indicator"></div>
+                                    <div class="knob-value">0</div>
+                                </div>
+                            </div>
+                            <div class="knob-info">
+                                <div class="knob-label">PRECISÃO</div>
+                                <div class="knob-desc">Qualidade GRINGA em todas as músicas</div>
+                            </div>
+                        </div>
+                        
+                        <div class="knob-container" data-type="velocidade">
+                            <div class="knob-wrapper">
+                                <div class="knob" data-knob="velocidade">
+                                    <div class="knob-indicator"></div>
+                                    <div class="knob-value">0</div>
+                                </div>
+                            </div>
+                            <div class="knob-info">
+                                <div class="knob-label">VELOCIDADE</div>
+                                <div class="knob-desc">Terminar músicas RÁPIDO</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="result-description" id="resultDescription">
+                        <div class="result-title">Gire os knobs para criar sua fórmula</div>
+                        <div class="result-subtitle">Distribua 300 pontos entre suas prioridades</div>
+                    </div>
+                    
+                    <div class="continue-section">
+                        <button class="continue-btn" id="continueBtn2" disabled onclick="goToStep(3)">
+                            Continuar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== ETAPA 3: SEGMENTAÇÃO DINÂMICA ===== -->
+        <section class="step" id="step3" style="display: none;">
+            <div class="main-container">
+                <div class="rack" id="mainRack" class="powered-off">
+                    <div class="rack-header">
+                        <div class="rack-name">FASE 1</div>
+                        <div class="rack-number" id="powerBtn">OFF</div>
+                    </div>
+                    <div class="segment-controls">
+                        <button class="segment-btn" data-segment="producer" id="producerBtn">Produtor</button>
+                        <button class="segment-btn" data-segment="artist" id="artistBtn">Artista</button>
+                    </div>
+                    <div class="segment-support">Você pode selecionar os dois, se for o seu caso.</div>
+                    <div class="knob-section">
+                        <div class="knob-label">Destravar Mixagem Dinâmica</div>
+                        <div class="knob" id="mainKnob">
+                            <div class="knob-indicator"></div>
+                        </div>
+                        <div class="knob-value" id="knobValue">0%</div>
+                    </div>
+                    <div class="vu-section">
+                        <div class="vu-label">Progresso de Ativação</div>
+                        <div class="vu-meter"><div class="vu-bar" id="progressBar"></div></div>
+                        <div class="progress-text" id="progressText">Selecione seu perfil e gire o knob para começar...</div>
+                    </div>
+                    <div class="leds">
+                        <div class="led-group"><div class="led" id="powerLed"></div><span class="led-label">PWR</span></div>
+                        <div class="led-group"><div class="led" id="processLed"></div><span class="led-label">PROC</span></div>
+                        <div class="led-group"><div class="led" id="completeLed"></div><span class="led-label">RDY</span></div>
+                    </div>
+                    <div class="advance-section">
+                        <button class="advance-btn" id="advanceBtn" onclick="goToStep(4)">🔒 Selecione um perfil para começar</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== ETAPA 4: MECANISMO ANTIGO COMUM ===== -->
+        <section class="step" id="step4" style="display: none;">
+            <div class="main-container">
+                <div class="header">
+                    <div class="progress-indicator">Etapa 4/7</div>
+                    <h1 class="title">O Caminho Tradicional</h1>
+                    <p class="subtitle">Vamos testar os métodos que todos usam...</p>
+                </div>
+                
+                <!-- Sistema de Pontuação -->
+                <div class="score-container">
+                    <div class="score-label">Energia do Sistema</div>
+                    <div class="score-bar">
+                        <div class="score-fill" id="scoreFill4">
+                            <div class="score-text" id="scoreText4">100/100</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Container de Escolhas/Resultado -->
+                <div class="choice-container" id="choiceContainer4">
+                    <h2 class="choice-title">Como você resolve seus problemas de mix?</h2>
+                    
+                    <div class="choices-grid" id="choicesGrid4">
+                        <!-- Choices serão inseridas dinamicamente -->
+                    </div>
+                </div>
+                
+                <!-- Botão Continuar -->
+                <div class="continue-section" id="continueSection4">
+                    <button class="continue-btn" id="continueBtn4" onclick="goToStep(5)">
+                        Tentar Última Alternativa
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== ETAPA 5: PRESETS COMUNS ===== -->
+        <section class="step" id="step5" style="display: none;">
+            <div class="main-container">
+                <div class="header">
+                    <div class="progress-indicator">Etapa 5/7</div>
+                    <h1 class="title">Última Chance</h1>
+                    <p class="subtitle">Talvez um preset pronto resolva...</p>
+                </div>
+                
+                <!-- Sistema de Pontuação -->
+                <div class="score-container">
+                    <div class="score-label">Energia Crítica do Sistema</div>
+                    <div class="score-bar">
+                        <div class="score-fill" id="scoreFill5">
+                            <div class="score-text" id="scoreText5">50/100</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Container de Presets -->
+                <div class="preset-container" id="presetContainer5">
+                    <div class="preset-header">
+                        <h2 class="preset-title">Banco de Presets "Profissionais"</h2>
+                        <p class="preset-subtitle">Escolha um preset para salvar sua mixagem</p>
+                    </div>
+                    
+                    <div class="preset-grid" id="presetGrid5">
+                        <!-- Presets serão inseridos dinamicamente -->
+                    </div>
+                    
+                    <!-- Waveform Display -->
+                    <div class="waveform-display" id="waveformDisplay5">
+                        <div class="waveform" id="waveform5">
+                            <!-- Barras serão inseridas dinamicamente -->
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Botão Continuar -->
+                <div class="continue-section" id="continueSection5">
+                    <button class="continue-btn" id="continueBtn5" onclick="showTransition()">
+                        Descobrir Nova Tecnologia
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== ETAPA 6: PRESETS DINÂMICOS ===== -->
+        <section class="step" id="step6" style="display: none;">
+            <div class="main-container">
+                <div class="header">
+                    <div class="progress-indicator">Etapa 6/7</div>
+                    <h1 class="title">Presets Dinâmicos</h1>
+                    <p class="subtitle">Tecnologia que se adapta ao SEU som</p>
+                </div>
+                
+                <!-- Sistema de Pontuação -->
+                <div class="score-container">
+                    <div class="score-label">Sistema de Energia Recuperando</div>
+                    <div class="score-bar">
+                        <div class="score-fill" id="scoreFill6">
+                            <div class="score-text" id="scoreText6">25/100</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Interface Principal -->
+                <div class="interface-container">
+                    <!-- Seção 1: Transiente Visual -->
+                    <div class="transient-display">
+                        <div class="transient-label">Análise de Transientes</div>
+                        <div class="waveform-container" id="waveformContainer6">
+                            <!-- Barras serão inseridas dinamicamente -->
+                        </div>
+                    </div>
+                    
+                    <!-- Seção 2: Feedback Box -->
+                    <div class="feedback-box">
+                        <div class="feedback-text" id="feedbackText6">
+                            Problemas detectados. Ajuste os controles dinâmicos...
+                        </div>
+                    </div>
+                    
+                    <!-- Seção 3: Problemas Vocais -->
+                    <div class="problems-section">
+                        <div class="problems-label">Problemas Identificados</div>
+                        <div class="problems-grid" id="problemsGrid6">
+                            <!-- Problemas serão inseridos dinamicamente -->
+                        </div>
+                    </div>
+                    
+                    <!-- Seção 4: Controles de Knob -->
+                    <div class="controls-section" id="controlsSection6">
+                        <div class="controls-label">Controles Dinâmicos Voxy Mix</div>
+                        <div class="knobs-grid" id="knobsGrid6">
+                            <!-- Knobs serão inseridos dinamicamente -->
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Seção de Sucesso -->
+                <div class="success-section" id="successSection6">
+                    <div class="success-message">
+                        <div class="success-title">🎯 Preset Dinâmico Otimizado!</div>
+                        <div class="success-subtitle">Sua voz foi automaticamente calibrada para qualidade profissional</div>
+                    </div>
+                    <button class="continue-btn" id="continueBtn6" onclick="goToStep(7)">
+                        Acessar Método Completo
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== ETAPA 7: OFERTA ===== -->
+        <section class="step" id="step7" style="display: none;">
+            <div class="main-container">
+                <!-- HERO SECTION -->
+                <section class="hero-section">
+                    <h1 class="hero-headline" id="heroHeadline">
+                        ACESSO VIP DESBLOQUEADO
+                    </h1>
+
+                    <div class="hero-subheadline" id="heroSubheadline">
+                        <span class="line1">Você é UM DOS POUCOS com a chance de dominar A NOVA ERA DA MIXAGEM</span>
+                        <span class="line2">(antes de todo mundo...)</span>
+                        <span class="line3" style="display: none;">(antes de todo mundo...)</span>
+                    </div>
+
+                    <div class="hero-logo">
+                        <img src="assets/images/logo-voxy-mix-transparente.png" alt="Voxy Mix Logo">
+                    </div>
+                </section>
+
+                <!-- 2. O QUE É O VOXY MIX -->
+                <section class="section">
+                    <h2 class="section-title">O Que É o Voxy Mix?</h2>
+                    <p class="section-subtitle">A junção perfeita de duas tecnologias revolucionárias</p>
+                    
+                    <div class="what-is-container">
+                        <div class="voxy-components">
+                            <div class="component-card">
+                                <div class="component-icon">🎛️</div>
+                                <h3 class="component-title">Presets Dinâmicos</h3>
+                                <p class="component-text">
+                                    Não são presets comuns. São presets TESTADOS, aprovados em compatibilidade 
+                                    e DINAMIZADOS com controles práticos que se adaptam a qualquer voz.
+                                </p>
+                            </div>
+                            
+                            <div class="component-card">
+                                <div class="component-icon">⚙️</div>
+                                <h3 class="component-title">Ferramenta StudioVerse</h3>
+                                <p class="component-text">
+                                    A tecnologia que torna possível a criação e uso desses novos tipos de presets. 
+                                    É ela que faz a "mágica" funcionar.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 3. COMPATIBILIDADE UNIVERSAL -->
+                <section class="section">
+                    <h2 class="section-title">Compatibilidade Universal</h2>
+                    <p class="section-subtitle">Funciona onde você já trabalha</p>
+                    
+                    <div class="compatibility-grid">
+                        <div class="compatibility-block">
+                            <span class="compatibility-icon">🖥️</span>
+                            <h3 class="compatibility-title">Windows</h3>
+                            <p class="compatibility-text">Todas as versões recentes</p>
+                        </div>
+                        
+                        <div class="compatibility-block">
+                            <span class="compatibility-icon">🍎</span>
+                            <h3 class="compatibility-title">Mac</h3>
+                            <p class="compatibility-text">Versão 10 até 15 (M1 incluso)</p>
+                        </div>
+                        
+                        <div class="compatibility-block">
+                            <span class="compatibility-icon">🎵</span>
+                            <h3 class="compatibility-title">Todas as DAWs</h3>
+                            <p class="compatibility-text">FL Studio, Logic, Ableton, etc.</p>
+                        </div>
+                        
+                        <div class="compatibility-block">
+                            <span class="compatibility-icon">🎤</span>
+                            <h3 class="compatibility-title">Qualquer Voz</h3>
+                            <p class="compatibility-text">Masculina, feminina, grave, aguda</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 7. OFERTA + CTA -->
+                <section class="section offer-section">
+                    <div class="offer-content">
+                        <div class="offer-badge">🔥 OFERTA POR TEMPO LIMITADO</div>
+                        
+                        <h2 class="offer-title">Garanta Seu Acesso Completo</h2>
+                        
+                        <div class="offer-items">
+                            <div class="offer-item">50+ PRESETS DINÂMICOS em 6 categorias</div>
+                            <div class="offer-item">200+ PLUGINS WAVES profissionais</div>
+                            <div class="offer-item">FERRAMENTA StudioVerse completa</div>
+                            <div class="offer-item">TUTORIAIS completos de instalação</div>
+                            <div class="offer-item">ATUALIZAÇÕES vitalícias</div>
+                            <div class="offer-item">GRUPO de networking exclusivo</div>
+                            <div class="offer-item">LIVES exclusivas com o criador</div>
+                            <div class="offer-item">CURSO de criação de presets (em breve)</div>
+                        </div>
+                        
+                        <div class="price-container">
+                            <div class="price-original">De R$ 497,00</div>
+                            <div class="price-current">R$ 97,90</div>
+                            <div class="price-installments">ou 12x de R$ 9,83 no cartão</div>
+                        </div>
+                        
+                        <a href="#" class="cta-button" id="ctaButton">
+                            QUERO MEU ACESSO AGORA
+                        </a>
+                    </div>
+                </section>
+
+                <!-- 8. GARANTIA -->
+                <section class="section guarantee-section">
+                    <h2 class="guarantee-title">Garantia INCONDICIONAL</h2>
+                    
+                    <div class="guarantee-seal">
+                        <img src="assets/images/imagem-garantia.webp" alt="Garantia 7 Dias">
+                    </div>
+                    
+                    <div class="guarantee-text">
+                        <p>
+                            O Voxy Mix tem uma garantia incondicional de 7 dias.
+                            A ferramenta está hospedada na Cakto, uma das plataformas mais fácil de pedir reembolso...
+                        </p>
+                        <p>
+                            Se eu quisesse esconder uma ferramenta ruim colocaria em outras plataformas que dificultam o reembolso 😉
+                        </p>
+                    </div>
+                </section>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- TRANSIÇÃO ENTRE ETAPAS -->
+    <div class="transition-screen" id="transitionScreen" style="display: none;">
+        <div class="transition-content">
+            <!-- Core de Análise Central -->
+            <div class="analysis-core">
+                <div class="core-rings"></div>
+                <div class="core-rings delay-1"></div>
+                <div class="core-rings delay-2"></div>
+                
+                <div class="analysis-center">
+                    <span class="central-icon" id="centralIcon">🎚️</span>
+                </div>
+            </div>
+
+            <!-- Display de Análise Moderno -->
+            <div class="analysis-display" id="analysisDisplay">
+                <!-- Panel será inserido via JavaScript -->
+            </div>
+
+            <!-- Loading Bar -->
+            <div class="progress-container">
+                <div class="progress-track">
+                    <div class="progress-fill"></div>
+                    <div class="progress-glow"></div>
+                </div>
+                <div class="progress-percentage" id="progressPercentage">0%</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PORTAL CHECKOUT -->
+    <div class="portal-overlay" id="portalOverlay" style="display: none;">
+        <div class="portal-container">
+            <div class="portal-particles" id="portalParticles"></div>
+            <div class="portal-outer"></div>
+            <div class="portal-middle"></div>
+            <div class="portal-inner"></div>
+            <div class="portal-lock">🔒</div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
